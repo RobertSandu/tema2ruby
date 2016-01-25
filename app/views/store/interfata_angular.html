@@ -1,0 +1,41 @@
+<script>
+toastr["success"]("Pagina a fost incarcata cu succes");
+
+var mainApp = angular.module("mainApp, []");
+
+mainApp.directive('produs',function(){
+	var directive = {};
+
+	directive.restrict = 'E';
+
+	directive.template = "<div class='col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4'>"
+		+"<div class='thumbnail' >"
+			+"<%= image_tag(product.image_url, :class => 'img-responsive') %>"
+			+"<div class='caption'>"
+				+"<div class='row'>"
+					+"<div class='col-md-6 col-xs-6'>"
+								"<h3> {{ produs.title }} </h3>"
+					+"</div>"
+				+"<div class='col-md-6 col-xs-6 price'>"
+				+"<h3>"
+				+"<label>Pret {{ produs.price }} </label></h3>"
+				+"</div>"
+				+"</div>"
+			+"<p> {{ produs.description }} </p>"
+				+"<div class='row'>"
+
+					+"<div class='col-md-6 col-md-offset-3'>"
+						+"<%= button_to 'Adauga in cos', line_items_path(:product_id => product), :class => 'btn btn-success btn-product' %>"
+					+"</div>"
+
+					+"<p> </p>"
+				+"</div>"
+			+"</div>"
+		+"</div>"
+	+"</div>";
+
+	directive.scope = {
+		produs : "=id";
+	}
+});
+</script>
